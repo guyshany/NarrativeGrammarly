@@ -18,7 +18,7 @@ import CircularLoader from '../loaders/CircularLoader'
 function Home2() {
   const [inputValue, setInputValue] = useState('')
   const [submitted, setSubmitted] = useState(false);
-  const [outputValue, setOutputValue] = useState('')
+  const [parsedText, setOutputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
 
@@ -32,6 +32,12 @@ function Home2() {
     const result = await parseText(text)
     setIsLoading(false)
     setOutputValue(result)
+  }
+
+  const GRADES = {
+    good: "good",
+    neurtal: "neutral",
+    bad: "bad"
   }
 
 
@@ -66,7 +72,24 @@ function Home2() {
                    onChange={handleChange}
                  />
                </div> : <div style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                {JSON.stringify(outputValue)}
+                {
+                  parsedText.forEach(classification => {
+                    
+                  })
+
+                  // parsedText.map(classification => {
+                  //   switch (classification.grade) {
+                  //     case GRADES.good:
+                  //       return <span>{classification.snippet}</span>
+                  //     case GRADES.bad:
+                  //       return <span>{classification.snippet}</span>
+                  //     case GRADES.neurtal:
+                  //       return <span>{classification.snippet}</span>
+                  //     default:
+                  //       return <span>{classification.snippet}</span>
+                  //   }
+                  // })
+                }
                 </div>
               }
               <Button
