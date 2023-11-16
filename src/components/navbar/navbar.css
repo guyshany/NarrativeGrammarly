@@ -123,7 +123,7 @@
 }
 
 .navbar-nav .nav-item a::after {
-  content: "";
+  content: '';
   position: relative;
   display: block;
   height: 5px;
@@ -157,7 +157,9 @@
   height: 15px;
   background-color: var(--clr-bg);
   border-radius: 1000px;
-  transition: margin-left 0.3s ease-in, background-color 0.3s ease-in;
+  transition:
+    margin-left 0.3s ease-in,
+    background-color 0.3s ease-in;
 }
 #toggle .toggle-inner.toggle-active {
   margin-left: 20px;

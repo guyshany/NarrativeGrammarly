@@ -1,62 +1,62 @@
-import React, { useContext, useEffect, useState } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { ThemeContext } from "../../Context/theme";
+import React, { useContext, useEffect, useState } from 'react'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import { ThemeContext } from '../../Context/theme'
 
-import Container from "react-bootstrap/Container";
-import logoLight from "../../Assets/logoLight.png";
-import logoDark from "../../Assets/logoDark.png";
+import Container from 'react-bootstrap/Container'
+import logoLight from '../../Assets/logoLight.png'
+import logoDark from '../../Assets/logoDark.png'
 
-import { Link } from "react-router-dom";
-import "./navbar.css";
+import { Link } from 'react-router-dom'
+import './navbar.css'
 
 function NavBar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
-  const [{ themename, toggeltheme }] = useContext(ThemeContext);
+  const [expand, updateExpanded] = useState(false)
+  const [navColour, updateNavbar] = useState(false)
+  const [{ themename, toggeltheme }] = useContext(ThemeContext)
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
-      updateNavbar(true);
+      updateNavbar(true)
     } else {
-      updateNavbar(false);
+      updateNavbar(false)
     }
   }
   useEffect(() => {
-    const body = document.body;
-    const toggle = document.querySelector(".toggle-inner");
-    if (themename === "dark") {
-      body.classList.add("dark-mode");
-      toggle.classList.add("toggle-active");
+    const body = document.body
+    const toggle = document.querySelector('.toggle-inner')
+    if (themename === 'dark') {
+      body.classList.add('dark-mode')
+      toggle.classList.add('toggle-active')
     } else {
-      body.classList.remove("dark-mode");
-      toggle.classList.remove("toggle-active");
+      body.classList.remove('dark-mode')
+      toggle.classList.remove('toggle-active')
     }
-  }, [themename]);
+  }, [themename])
 
-  window.addEventListener("scroll", scrollHandler);
+  window.addEventListener('scroll', scrollHandler)
 
   return (
     <Navbar
       expanded={expand}
       fixed="top"
       expand="md"
-      className={navColour ? "sticky" : "navbar"}
+      className={navColour ? 'sticky' : 'navbar'}
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
           <img
-            src={themename === "light" ? logoDark : logoLight}
+            src={themename === 'light' ? logoDark : logoLight}
             className="img-fluid logo"
             alt="brand"
-            style={{width: "48", height: "40"}}
+            style={{ width: '48', height: '40' }}
           />
         </Navbar.Brand>
 
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => {
-            updateExpanded(expand ? false : "expanded");
+            updateExpanded(expand ? false : 'expanded')
           }}
         >
           <div className="toggleButton">
@@ -114,7 +114,7 @@ function NavBar() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

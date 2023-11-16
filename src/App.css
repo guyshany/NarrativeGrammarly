@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 .app {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   line-height: 1.5;
   color: var(--clr-txt);

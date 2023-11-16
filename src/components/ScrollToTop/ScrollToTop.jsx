@@ -1,27 +1,27 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import "./scroll.css";
-import { AiOutlineArrowUp } from "react-icons/ai";
+import React from 'react'
+import { useEffect, useState } from 'react'
+import './scroll.css'
+import { AiOutlineArrowUp } from 'react-icons/ai'
 
 const ScrollToTop = () => {
-  const [backToTopButtom, setBackTopButton] = useState(false);
+  const [backToTopButtom, setBackTopButton] = useState(false)
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
-        setBackTopButton(true);
+        setBackTopButton(true)
       } else {
-        setBackTopButton(false);
+        setBackTopButton(false)
       }
-    });
-  }, []);
+    })
+  }, [])
 
   const scrollUp = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
-    });
-  };
+      behavior: 'smooth',
+    })
+  }
 
   return (
     <div className="App">
@@ -31,7 +31,7 @@ const ScrollToTop = () => {
         </button>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ScrollToTop;
+export default ScrollToTop
