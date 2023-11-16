@@ -49,7 +49,7 @@ function NavBar() {
             src={themename === 'light' ? logoDark : logoLight}
             className="img-fluid logo"
             alt="brand"
-            style={{ width: '80px', height: '80px' }}
+            style={{ width: '60px', height: '60px' }}
           />
         </Navbar.Brand>
 
