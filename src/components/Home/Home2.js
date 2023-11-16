@@ -16,30 +16,36 @@ import { parseText } from  '../../OpenAI/openai'
 import CircularLoader from '../loaders/CircularLoader'
 
 function Home2() {
-  const [inputValue, setInputValue] = useState('')
+  const [originalText, setOriginalText] = useState('')
   const [submitted, setSubmitted] = useState(false);
-  const [parsedText, setOutputValue] = useState('')
+  const [highLightedText, setHighlightedText] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-
   const handleChange = (event) => {
-    setInputValue(event.target.value)
+    setOriginalText(event.target.value)
   }
 
   const onClick = async (text) => {
     setSubmitted(true);
     setIsLoading(true)
     const result = await parseText(text)
+    let highLightedText = ''
+    result.forEach(classification => {
+      highLightedText += highlightSnippets(originalText, [classification]);
+    })
+    setHighlightedText(highLightedText)
     setIsLoading(false)
-    setOutputValue(result)
   }
 
-  const GRADES = {
-    good: "good",
-    neurtal: "neutral",
-    bad: "bad"
-  }
+  function highlightSnippets(text, rules) {
+    rules.forEach(rule => {
+        var regex = new RegExp(rule.snippet, 'g');
+        var replacement = `<span class="${rule.grade}">${rule.snippet}</span>`;
+        text = text.replace(regex, replacement);
+    });
 
+    return text;
+}
 
   return (
     <Container fluid className="home-about-section" id="about">
@@ -73,30 +79,14 @@ function Home2() {
                  />
                </div> : <div style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 {
-                  // parsedText.forEach(classification => {
-
-                  // })
-                  JSON.stringify(parsedText)
-
-                  // parsedText.map(classification => {
-                  //   switch (classification.grade) {
-                  //     case GRADES.good:
-                  //       return <span>{classification.snippet}</span>
-                  //     case GRADES.bad:
-                  //       return <span>{classification.snippet}</span>
-                  //     case GRADES.neurtal:
-                  //       return <span>{classification.snippet}</span>
-                  //     default:
-                  //       return <span>{classification.snippet}</span>
-                  //   }
-                  // })
+                  highLightedText
                 }
                 </div>
               }
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => !submitted ? onClick(inputValue) : setSubmitted(false)}
+                onClick={() => !submitted ? onClick(originalText) : setSubmitted(false)}
               >
                 {!submitted ? "Adjust Post" : "Write A New Post" }
               </Button>
