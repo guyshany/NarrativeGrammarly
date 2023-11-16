@@ -6,6 +6,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import Home2 from './Home2'
 import Type from './Type'
 import './home.css'
+import ScrollToBottom from '../ScrollToBottom/ScrollToBottom'
 
 function Home() {
   return (
@@ -39,6 +40,7 @@ function Home() {
                 style={{ paddingTop: 50 }}
               />
             </Col>
+            <ScrollToBottom />
           </Row>
         </Container>
       </Container>
