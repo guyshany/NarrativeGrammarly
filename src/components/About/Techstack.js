@@ -1,23 +1,23 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 import {
   DiJavascript1,
   DiReact,
   DiNodejs,
   DiMongodb,
   DiGit,
-} from "react-icons/di";
+} from 'react-icons/di'
 import {
   SiFirebase,
   SiNextdotjs,
   SiTailwindcss,
   SiRedux,
   SiMui,
-} from "react-icons/si";
+} from 'react-icons/si'
 
 function Techstack() {
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+    <Row style={{ justifyContent: 'center', paddingBottom: '50px' }}>
       <Col xs={4} md={2} className="tech-icons">
         <DiJavascript1 />
       </Col>
@@ -49,7 +49,7 @@ function Techstack() {
         <SiMui />
       </Col>
     </Row>
-  );
+  )
 }
 
-export default Techstack;
+export default Techstack

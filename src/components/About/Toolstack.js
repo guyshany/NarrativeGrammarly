@@ -1,18 +1,16 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 import {
   SiLinux,
   SiVisualstudiocode,
   SiPostman,
-  
   SiVercel,
-
   SiGithub,
-} from "react-icons/si";
+} from 'react-icons/si'
 
 function Toolstack() {
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+    <Row style={{ justifyContent: 'center', paddingBottom: '50px' }}>
       <Col xs={4} md={2} className="tech-icons">
         <SiLinux />
       </Col>
@@ -29,7 +27,7 @@ function Toolstack() {
         <SiGithub />
       </Col>
     </Row>
-  );
+  )
 }
 
-export default Toolstack;
+export default Toolstack

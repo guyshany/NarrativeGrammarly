@@ -1,11 +1,11 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import homeIcon from "../../Assets/homeicons.svg";
-import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import React from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
+import homeIcon from '../../Assets/homeicons.svg'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
-import Home2 from "./Home2";
-import Type from "./Type";
-import "./home.css";
+import Home2 from './Home2'
+import Type from './Type'
+import './home.css'
 
 function Home() {
   return (
@@ -15,10 +15,10 @@ function Home() {
           <Row>
             <Col md={7} className="home-header">
               <h1 style={{ paddingBottom: 15 }} className="heading">
-                Hi There!{" "}
+                Hi There!{' '}
                 <span className="wave" role="img" aria-labelledby="wave">
                   👋🏻
-                </span>{" "}
+                </span>{' '}
                 I'M
               </h1>
 
@@ -45,7 +45,7 @@ function Home() {
       <Home2 />
       <ScrollToTop />
     </section>
-  );
+  )
 }
 
-export default Home;
+export default Home
