@@ -12,30 +12,35 @@ import {
 } from 'react-icons/ai'
 import { FaLinkedinIn } from 'react-icons/fa'
 import Button from '@mui/material/Button'
-import { parseData } from '../../BL/parseData'
+import { parseText } from  '../../OpenAI/openai'
+import CircularLoader from '../loaders/CircularLoader'
 
 function Home2() {
   const [inputValue, setInputValue] = useState('')
   const [submitted, setSubmitted] = useState(false);
-
   const [outputValue, setOutputValue] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
 
   const handleChange = (event) => {
     setInputValue(event.target.value)
   }
 
-  const onClick = (text) => {
+  const onClick = async (text) => {
     setSubmitted(true);
-    parseData(text)
+    setIsLoading(true)
+    const result = await parseText(text)
+    setIsLoading(false)
+    setOutputValue(result)
   }
-
 
 
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
-          <Col md={12} className="home-about-description">
+          <Col md={12} className="home-about-description" style={{
+    alignItems: 'center'}}>
             <h1 style={{ fontSize: '2.6em' }} data-aos="fade-right">
               <span className="primary-header"> WRITE YOUR </span> POST
             </h1>
@@ -46,24 +51,28 @@ function Home2() {
               }}
               noValidate
               autoComplete="off"
+              height={"60vh"}
             >
-              <div>
-                <TextField
-                  id="outlined-multiline-static"
-                  label="New Post"
-                  multiline
-                  rows={15}
-                  maxRows={50}
-                  style={{ width: '70vw' }}
-                  onChange={handleChange}
-                />
-              </div>
+              {
+                 isLoading ? <CircularLoader load={isLoading} /> :
+                 !submitted ? <div>
+                 <TextField
+                   id="outlined-multiline-static"
+                   label="New Post"
+                   multiline
+                   rows={15}
+                   maxRows={50}
+                   style={{ width: '70vw' }}
+                   onChange={handleChange}
+                 />
+               </div> : <div style={{height: '53vh', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>{outputValue}</div>
+              }
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => onClick(inputValue)}
+                onClick={() => !submitted ? onClick(inputValue) : setSubmitted(false)}
               >
-                Adjust Post
+                {!submitted ? "Adjust Post" : "Write A New Post" }
               </Button>
             </Box>
           </Col>
@@ -73,7 +82,7 @@ function Home2() {
             <h1 data-aos="fade-right">
               SHARE ON<span className="primary-header"> SOCIAL MEDIA </span>
             </h1>
-            <p data-aos="fade-left">Feel free to connect with me</p>
+            <p data-aos="fade-left">Feel free to connect us</p>
             <ul className="home-about-social-links" data-aos="fade-up">
               <li className="social-icons">
                 <a
