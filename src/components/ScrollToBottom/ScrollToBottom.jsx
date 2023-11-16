@@ -4,7 +4,7 @@ import './scroll.css'
 import { AiOutlineArrowUp } from 'react-icons/ai'
 
 const ScrollToBottom = () => {
-  const [backToTopButtom, setBackTopButton] = useState(false)
+  const [backToTopButtom, setBackTopButton] = useState(true)
 
   useEffect(() => {
     window.addEventListener('scroll', () => {

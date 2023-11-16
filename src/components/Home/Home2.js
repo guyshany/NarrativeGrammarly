@@ -65,7 +65,9 @@ function Home2() {
                    style={{ width: '70vw' }}
                    onChange={handleChange}
                  />
-               </div> : <div style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>{outputValue}</div>
+               </div> : <div style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                {JSON.stringify(outputValue)}
+                </div>
               }
               <Button
                 variant="contained"
