@@ -6,9 +6,9 @@ function Type() {
     <Typewriter
       options={{
         strings: [
-          'Narrative Grammerly',
-          'Correct message mistakes',
-          'Adjust message to sitatuions',
+          'Boost your messaging effectiveness',
+          'Avoid messaging pitfalls',
+          'Address specific audiences',
         ],
         autoStart: true,
         loop: true,
