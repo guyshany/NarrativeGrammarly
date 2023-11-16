@@ -14,13 +14,13 @@ import { FaLinkedinIn } from 'react-icons/fa'
 import Button from '@mui/material/Button'
 import { parseText } from  '../../OpenAI/openai'
 import CircularLoader from '../loaders/CircularLoader'
+// import './home2.css'
 
 function Home2() {
   const [originalText, setOriginalText] = useState('')
   const [submitted, setSubmitted] = useState(false);
-  const [highLightedText, setHighlightedText] = useState(<></>)
-  const [isLoading, setIsLoading] = useState(false)
-  const [hashTags, setHashTags] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [highlightedText, setHighlightedText] = useState('')
 
   const handleChange = (event) => {
     setOriginalText(event.target.value)
@@ -28,34 +28,30 @@ function Home2() {
 
   const onClick = async (text) => {
     setSubmitted(true);
-    setIsLoading(true)
+    setIsLoading(true);
     const rules = await parseText(text, "american_liberals")
 
-    let hashTags = ''
-    rules.forEach(rule => {
-      if(rule.hashTags) {
-        hashTags += " " + rule.hashTags;
-      }
-    })
+    // let hashTags = ''
+    // rules.forEach(rule => {
+    //   if(rule.hashTags) {
+    //     hashTags += " " + rule.hashTags;
+    //   }
+    // })
 
-    setHashTags(hashTags)
+    // setHashTags(hashTags)
 
-  //   function highlightSnippets(text, rules) {
-  //     let highlighted = ''
-  //     rules.forEach(rule => {
-  //         var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
-  //         highlighted = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
-  //     });
+
+    function highlightSnippets(text, rules) {
+      rules.forEach(rule => {
+          var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+          text = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
+      });
   
-  //     return highlighted;
-  // }
+      return text;
+  }
 
-    // let highlightedText = highlightSnippets(originalText, rules);
-    
-    // // Wrap the modified HTML in a container div
-    // var containerDiv = document.getElementById('highLightedText')
-    // containerDiv.innerHTML = highlightedText;
-
+    let highlightedText = highlightSnippets(originalText, rules);
+    setHighlightedText(highlightedText)
     setIsLoading(false)
 } 
 
@@ -68,6 +64,9 @@ function Home2() {
             <h1 style={{ fontSize: '2.6em' }} data-aos="fade-right">
               <span className="primary-header"> WRITE YOUR </span> POST
             </h1>
+            <div style={{align: 'left'}}>
+
+  </div>
             <Box
               component="form"
               sx={{
@@ -76,7 +75,9 @@ function Home2() {
               noValidate
               autoComplete="off"
               height={"60vh"}
+             
             >
+              <div id="container2">
               {
                  isLoading ? <CircularLoader load={isLoading} /> :
                  !submitted ? <div>
@@ -89,12 +90,10 @@ function Home2() {
                    style={{ width: '70vw' }}
                    onChange={handleChange}
                  />
-               </div> : <div id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                {
-                  hashTags
-                }
+               </div> : <div className='bad' id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
                 </div>
               }
+              </div>
               <Button
                 variant="contained"
                 color="primary"
@@ -104,24 +103,22 @@ function Home2() {
               </Button>
             </Box>
           </Col>
+          <p><input type="radio" id="american_liberals" name="audience" value="american_liberals" />
+            <label for="liberals">🗽 American Liberals</label></p>
+
+            <p><input type="radio" id="american_conservatives" name="audience" value="american_conservatives" />
+            <label for="right_wing">🦅 American Conservatives</label></p>
+
+            <p><input type="radio" id="muslims" name="audience" value="muslims" />
+            <label for="muslims">🕌 Muslims</label></p>
+
+            <p><input type="radio" id="hitech" name="audience" value="hitech" />
+            <label for="ukrainians">💻 Ukrainians</label></p>
+
+            <p><input type="radio" id="kids" name="audience" value="kids" />
+            <label for="ukrainians">🧸 Kids</label></p>
         </Row>
         <Row>
-          <div style={{align: 'left'}}>
-            <p><input type="radio" id="american_liberals" name="audience" value="american_liberals" />
-  <label for="liberals">🗽 American Liberals</label></p>
-
-  <p><input type="radio" id="american_conservatives" name="audience" value="american_conservatives" />
-  <label for="right_wing">🦅 American Conservatives</label></p>
-
-  <p><input type="radio" id="muslims" name="audience" value="muslims" />
-  <label for="muslims">🕌 Muslims</label></p>
-
-  <p><input type="radio" id="hitech" name="audience" value="hitech" />
-  <label for="ukrainians">💻 Ukrainians</label></p>
-
-  <p><input type="radio" id="kids" name="audience" value="kids" />
-  <label for="ukrainians">🧸 Kids</label></p>
-  </div>
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
