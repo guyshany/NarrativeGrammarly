@@ -31,12 +31,13 @@ function Home2() {
     const rules = await parseText(text)
 
     function highlightSnippets(text, rules) {
+      let highlighted = ''
       rules.forEach(rule => {
           var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
-          text = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
+          highlighted = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
       });
   
-      return text;
+      return highlighted;
   }
 
     let highlightedText = highlightSnippets(originalText, rules);
@@ -87,7 +88,7 @@ function Home2() {
                 color="primary"
                 onClick={() => !submitted ? onClick(originalText) : setSubmitted(false)}
               >
-                {!submitted ? "Adjust Post" : "Write A New Post" }
+                {!submitted ? "Enhance Post" : "Write A New Post" }
               </Button>
             </Box>
           </Col>
@@ -97,7 +98,7 @@ function Home2() {
             <h1 data-aos="fade-right">
               SHARE ON<span className="primary-header"> SOCIAL MEDIA </span>
             </h1>
-            <p data-aos="fade-left">Feel free to connect us</p>
+            <p data-aos="fade-left">Get in touch with your audience</p>
             <ul className="home-about-social-links" data-aos="fade-up">
               <li className="social-icons">
                 <a
