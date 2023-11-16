@@ -7,12 +7,11 @@ function getRules(audience, platform)
 {
     var result = [];
 
-    for(rule in rules)
-    {
-        if(rule.audience == audience || rule.audience == "*")
+    rules.forEach(function (rule, index) {
+      if(rule.audience == audience || rule.audience == "*")
             if(rule.platform == platform || rule.platform == "*")
                 result.push(rule);
-    }
+    });
 
     return result;
 }
