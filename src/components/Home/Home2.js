@@ -18,7 +18,7 @@ import CircularLoader from '../loaders/CircularLoader'
 function Home2() {
   const [originalText, setOriginalText] = useState('')
   const [submitted, setSubmitted] = useState(false);
-  const [highLightedText, setHighlightedText] = useState('')
+  const [highLightedText, setHighlightedText] = useState(<></>)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (event) => {
@@ -30,37 +30,24 @@ function Home2() {
     setIsLoading(true)
     const rules = await parseText(text)
 
-    function containsText(element, text) {
-      return element.textContent.includes(text);
-  }
+    function highlightSnippets(text, rules) {
+      let highlighted = ''
+      rules.forEach(rule => {
+          var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+          highlighted = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
+      });
   
-function containsText(element, text) {
-    return element.textContent.includes(text);
-}
+      return highlighted;
+  }
 
-function highlightSnippets(text, rules) {
-    var container = document.createElement('div');
-    container.innerHTML = text;
+    let highlightedText = highlightSnippets(originalText, rules);
+    
+    // Wrap the modified HTML in a container div
+    var containerDiv = document.getElementById('highLightedText')
+    containerDiv.innerHTML = highlightedText;
 
-    rules.forEach(rule => {
-        var elements = container.querySelectorAll('*');
-        
-        elements.forEach(el => {
-            if (containsText(el, rule.snippet)) {
-                var replacement = document.createElement('span');
-                replacement.className = rule.grade;
-                replacement.textContent = rule.snippet;
-                el.parentNode.replaceChild(replacement, el);
-            }
-        });
-    });
-
-    return container.innerHTML;
-}
-
-  setHighlightedText(highlightSnippets(text, rules))
-  setIsLoading(false)
-}
+    setIsLoading(false)
+} 
 
   return (
     <Container fluid className="home-about-section" id="about">
@@ -92,10 +79,8 @@ function highlightSnippets(text, rules) {
                    style={{ width: '70vw' }}
                    onChange={handleChange}
                  />
-               </div> : <div style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                {
-                  highLightedText
-                }
+               </div> : <div id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+              
                 </div>
               }
               <Button
@@ -103,7 +88,7 @@ function highlightSnippets(text, rules) {
                 color="primary"
                 onClick={() => !submitted ? onClick(originalText) : setSubmitted(false)}
               >
-                {!submitted ? "Adjust Post" : "Write A New Post" }
+                {!submitted ? "Enhance Post" : "Write A New Post" }
               </Button>
             </Box>
           </Col>
@@ -131,7 +116,7 @@ function highlightSnippets(text, rules) {
             <h1 data-aos="fade-right">
               SHARE ON<span className="primary-header"> SOCIAL MEDIA </span>
             </h1>
-            <p data-aos="fade-left">Feel free to connect us</p>
+            <p data-aos="fade-left">Get in touch with your audience</p>
             <ul className="home-about-social-links" data-aos="fade-up">
               <li className="social-icons">
                 <a
