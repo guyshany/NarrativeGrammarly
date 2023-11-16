@@ -28,23 +28,38 @@ function Home2() {
   const onClick = async (text) => {
     setSubmitted(true);
     setIsLoading(true)
-    const result = await parseText(text)
-    let highLightedText = ''
-    result.forEach(classification => {
-      highLightedText += highlightSnippets(originalText, [classification]);
-    })
-    setHighlightedText(highLightedText)
-    setIsLoading(false)
-  }
+    const rules = await parseText(text)
 
-  function highlightSnippets(text, rules) {
+    function containsText(element, text) {
+      return element.textContent.includes(text);
+  }
+  
+function containsText(element, text) {
+    return element.textContent.includes(text);
+}
+
+function highlightSnippets(text, rules) {
+    var container = document.createElement('div');
+    container.innerHTML = text;
+
     rules.forEach(rule => {
-        var regex = new RegExp(rule.snippet, 'g');
-        var replacement = `<span class="${rule.grade}">${rule.snippet}</span>`;
-        text = text.replace(regex, replacement);
+        var elements = container.querySelectorAll('*');
+        
+        elements.forEach(el => {
+            if (containsText(el, rule.snippet)) {
+                var replacement = document.createElement('span');
+                replacement.className = rule.grade;
+                replacement.textContent = rule.snippet;
+                el.parentNode.replaceChild(replacement, el);
+            }
+        });
     });
 
-    return text;
+    return container.innerHTML;
+}
+
+  setHighlightedText(highlightSnippets(text, rules))
+  setIsLoading(false)
 }
 
   return (
