@@ -3,7 +3,7 @@ import { open_ai_key } from "./openai-key.js";
 
 const openai = new OpenAI({ apiKey: open_ai_key, dangerouslyAllowBrowser: true });
 
-async function parseText(text) {
+export async function parseText(text) {
 
 
   const questions = `* Is it talking about hospital?
