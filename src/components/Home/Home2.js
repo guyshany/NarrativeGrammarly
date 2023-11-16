@@ -16,11 +16,20 @@ import { parseData } from '../../BL/parseData'
 
 function Home2() {
   const [inputValue, setInputValue] = useState('')
+  const [submitted, setSubmitted] = useState(false);
+
   const [outputValue, setOutputValue] = useState('')
 
   const handleChange = (event) => {
     setInputValue(event.target.value)
   }
+
+  const onClick = (text) => {
+    setSubmitted(true);
+    parseData(text)
+  }
+
+
 
   return (
     <Container fluid className="home-about-section" id="about">
@@ -52,7 +61,7 @@ function Home2() {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={() => parseData(inputValue)}
+                onClick={() => onClick(inputValue)}
               >
                 Adjust Post
               </Button>
