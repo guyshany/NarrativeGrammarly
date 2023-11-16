@@ -6,6 +6,8 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop'
 import Home2 from './Home2'
 import Type from './Type'
 import './home.css'
+import logoDark from '../../Assets/logoDark.png'
+
 import ScrollToBottom from '../ScrollToBottom/ScrollToBottom'
 
 function Home() {
@@ -24,7 +26,13 @@ function Home() {
               </h1>
 
               <h1 className="heading-name">
-                <strong className="main-name">Narratively</strong>
+              <img
+                src={logoDark}
+                className="img-fluid logo"
+                alt="brand"
+                style={{ width: '100px', height: '100px', marginBottom: '9px' }}
+              />
+                <strong className="main-name">arratively</strong>
               </h1>
 
               <div style={{ padding: 30 }} className="type">
