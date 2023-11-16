@@ -109,6 +109,24 @@ function highlightSnippets(text, rules) {
           </Col>
         </Row>
         <Row>
+          <div style={{align: 'left'}}>
+            <p><input type="radio" id="american_liberals" name="audience" value="american_liberals" />
+  <label for="liberals">🗽 American Liberals</label></p>
+
+  <p><input type="radio" id="american_conservatives" name="audience" value="american_conservatives" />
+  <label for="right_wing">🦅 American Conservatives</label></p>
+
+  <p><input type="radio" id="muslims" name="audience" value="muslims" />
+  <label for="muslims">🕌 Muslims</label></p>
+
+  <p><input type="radio" id="hitech" name="audience" value="hitech" />
+  <label for="ukrainians">💻 Ukrainians</label></p>
+
+  <p><input type="radio" id="kids" name="audience" value="kids" />
+  <label for="ukrainians">🧸 Kids</label></p>
+  </div>
+        </Row>
+        <Row>
           <Col md={12} className="home-about-social">
             <h1 data-aos="fade-right">
               SHARE ON<span className="primary-header"> SOCIAL MEDIA </span>
