@@ -14,6 +14,7 @@ import { FaLinkedinIn } from 'react-icons/fa'
 import Button from '@mui/material/Button'
 import { parseText } from  '../../OpenAI/openai'
 import CircularLoader from '../loaders/CircularLoader'
+import { Typography } from '@mui/material'
 // import './home2.css'
 
 function Home2() {
@@ -43,7 +44,7 @@ function Home2() {
 
     function highlightSnippets(text, rules) {
       rules.forEach(rule => {
-          var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+          var regex = new RegExp(rule.snippet);
           text = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
       });
   
@@ -85,13 +86,19 @@ function Home2() {
                    id="outlined-multiline-static"
                    label="New Post"
                    multiline
-                   rows={15}
+                   rows={10}
                    maxRows={50}
-                   style={{ width: '70vw' }}
+                   style={{ width: '70vw'}}
+                   InputProps={{
+                    style: {
+                      fontSize: 23,
+                      fontFamily: 'sans-serif'
+                    },
+                  }}
                    onChange={handleChange}
                  />
-               </div> : <div className='bad' id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
-                </div>
+               </div> : <Typography variant='h5' className='bad' id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
+                </Typography>
               }
               </div>
               <Button
