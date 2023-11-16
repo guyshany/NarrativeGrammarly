@@ -48,6 +48,11 @@ export async function parseText(text) {
 
   var trueRules = rules.filter(function(el){return el.answer==true});
 
+  for(var i=0; i<trueRules.length; i++)
+  {
+    trueRules[i].id = i;
+  }
+
   console.log(trueRules);
   return trueRules;
 }

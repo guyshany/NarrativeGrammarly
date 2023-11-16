@@ -7,6 +7,7 @@ rules.push({audience: "*", platform: "*", question: "Does the following test tal
 rules.push({audience: "*", platform: "*", question: "can the first sentence of the following text be improved to effectively summerise the text and create emotinal engagement? ", grade: "Neutral", response: "Consider reprasing your first sentance so taht it will effectily summerise the post content and create emotional engagement"});
 rules.push({audience: "US democrat liberals", platform: "*", question: "does the following text uses religous themes and images to prove its main point ", grade: "bad", response: "your post uses relogous themes and images discuss its main point, this kind of themes are not well accepted with your target audience. consider rephrasing your post"});
 
+//Can the first sentence of this text be improved to effectively summerise the text? Please answer in yes or no if yes provide an alternative first sentence no longer then 12 words
 
 function getRules(audience, platform)
 {
