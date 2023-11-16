@@ -45,12 +45,12 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
-          <img
+          {/* <img
             src={themename === 'light' ? logoDark : logoLight}
             className="img-fluid logo"
             alt="brand"
             style={{ width: '60px', height: '60px' }}
-          />
+          /> */}
         </Navbar.Brand>
 
         <Navbar.Toggle

@@ -20,6 +20,7 @@ function Home2() {
   const [submitted, setSubmitted] = useState(false);
   const [highLightedText, setHighlightedText] = useState(<></>)
   const [isLoading, setIsLoading] = useState(false)
+  const [hashTags, setHashTags] = useState(false)
 
   const handleChange = (event) => {
     setOriginalText(event.target.value)
@@ -28,23 +29,32 @@ function Home2() {
   const onClick = async (text) => {
     setSubmitted(true);
     setIsLoading(true)
-    const rules = await parseText(text)
+    const rules = await parseText(text, "american_liberals")
 
-    function highlightSnippets(text, rules) {
-      let highlighted = ''
-      rules.forEach(rule => {
-          var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
-          highlighted = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
-      });
+    let hashTags = ''
+    rules.forEach(rule => {
+      if(rule.hashTags) {
+        hashTags += " " + rule.hashTags;
+      }
+    })
+
+    setHashTags(hashTags)
+
+  //   function highlightSnippets(text, rules) {
+  //     let highlighted = ''
+  //     rules.forEach(rule => {
+  //         var regex = new RegExp(rule.snippet.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+  //         highlighted = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
+  //     });
   
-      return highlighted;
-  }
+  //     return highlighted;
+  // }
 
-    let highlightedText = highlightSnippets(originalText, rules);
+    // let highlightedText = highlightSnippets(originalText, rules);
     
-    // Wrap the modified HTML in a container div
-    var containerDiv = document.getElementById('highLightedText')
-    containerDiv.innerHTML = highlightedText;
+    // // Wrap the modified HTML in a container div
+    // var containerDiv = document.getElementById('highLightedText')
+    // containerDiv.innerHTML = highlightedText;
 
     setIsLoading(false)
 } 
@@ -80,7 +90,9 @@ function Home2() {
                    onChange={handleChange}
                  />
                </div> : <div id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-              
+                {
+                  hashTags
+                }
                 </div>
               }
               <Button
