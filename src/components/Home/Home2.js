@@ -73,9 +73,10 @@ function Home2() {
                  />
                </div> : <div style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 {
-                  parsedText.forEach(classification => {
-                    
-                  })
+                  // parsedText.forEach(classification => {
+
+                  // })
+                  JSON.stringify(parsedText)
 
                   // parsedText.map(classification => {
                   //   switch (classification.grade) {
