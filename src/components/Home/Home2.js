@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/Avatar.png";
 import Tilt from "react-parallax-tilt";
@@ -11,9 +11,16 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
-import { width } from "@mui/system";
+import Button from '@mui/material/Button';
+import { parseData } from "../../BL/parseData";
 
 function Home2() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
@@ -38,8 +45,12 @@ function Home2() {
           rows={15}
           maxRows={50}
           style={{width: '70vw'}}
+          onChange={handleChange}
         />
         </div>
+        <Button variant="contained" color="primary" onClick={() => parseData(inputValue)} > 
+          Adjust Post
+        </Button>
     </Box>
             {/* <Box
               component="form"
