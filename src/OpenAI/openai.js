@@ -10,7 +10,7 @@ const openai = new OpenAI({
 export async function parseText(text, audience) {
 
   //const questions = ['Is it talking about hospital?','Is it talking about the war?','Is it talking about peace?','Is it talking about revenge?','* Is it talking about the holocaust?'];
-audience="american_liberals";
+//audience="american_liberals";
 //audience="hitech";
   var rules = getRules(audience, "*");
 
