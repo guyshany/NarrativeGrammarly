@@ -110,7 +110,7 @@ function Home2() {
             <label for="muslims">🕌 Muslims </label></p>
 
             <p className='audienceInput'><input type="radio" id="hitech" name="audience" value="hitech" />
-            <label for="ukrainians">💻 Ukrainians </label></p>
+            <label for="hitech">💻 Hi-tech</label></p>
 
             <p className='audienceInput'><input type="radio" id="kids" name="audience" value="kids" />
             <label for="ukrainians">🧸 Kids </label></p>
