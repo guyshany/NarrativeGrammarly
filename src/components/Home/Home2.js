@@ -127,7 +127,7 @@ function Home2() {
               <div id="container2">
               {
                  isLoading ? <CircularLoader load={isLoading} /> :
-                 !submitted ? <div>
+                 !submitted ? <div style={{padding: '3px'}}>
                  <TextField
                    id="outlined-multiline-static"
                    label="New Post"
@@ -143,7 +143,8 @@ function Home2() {
                   }}
                    onChange={handleChange}
                  />
-               </div> : <Typography variant='h5' id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
+               </div> : <Typography variant='h5' id="highLightedText"
+                style={{padding: '0 64px', height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
                 </Typography>
               }
               </div>
