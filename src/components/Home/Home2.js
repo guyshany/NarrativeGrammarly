@@ -31,16 +31,22 @@ function Home2() {
   const onClick = async (text) => {
     setSubmitted(true);
     setIsLoading(true);
-    const rules = await parseText(text, "american_liberals")
+    var radioButtons = document.getElementsByName("audience");
 
-    // let hashTags = ''
-    // rules.forEach(rule => {
-    //   if(rule.hashTags) {
-    //     hashTags += " " + rule.hashTags;
-    //   }
-    // })
+    // Initialize a variable to store the selected value
+    var selectedValue;
+    
+    // Loop through the radio buttons to find the selected one
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            selectedValue = radioButtons[i].value;
+            break;
+        }
+    }
 
-    // setHashTags(hashTags)
+    const rules = await parseText(text, selectedValue)
+
+  
 
     function highlightSnippets(text, rules) {
       rules.forEach(rule => {
@@ -93,6 +99,22 @@ function Home2() {
               height={"60vh"}
              
             >
+              <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
+              <p><input checked={true} type="radio" id="american_liberals" name="audience" value="american_liberals" />
+            <label for="liberals">🗽 American Liberals </label></p>
+
+            <p className='audienceInput'><input type="radio" id="american_conservatives" name="audience" value="american_conservatives" />
+            <label for="right_wing">🦅 American Conservatives </label></p>
+
+            <p className='audienceInput'><input type="radio" id="muslims" name="audience" value="muslims" />
+            <label for="muslims">🕌 Muslims </label></p>
+
+            <p className='audienceInput'><input type="radio" id="hitech" name="audience" value="hitech" />
+            <label for="ukrainians">💻 Ukrainians </label></p>
+
+            <p className='audienceInput'><input type="radio" id="kids" name="audience" value="kids" />
+            <label for="ukrainians">🧸 Kids </label></p>
+              </div>
               <div id="container2">
               {
                  isLoading ? <CircularLoader load={isLoading} /> :
@@ -119,30 +141,18 @@ function Home2() {
               <Button
                 variant="contained"
                 color="primary"
+                style={{marginTop: "20px"}}
                 onClick={() => !submitted ? onClick(originalText) : setSubmitted(false)}
               >
                 {!submitted ? "Enhance Post" : "Write A New Post" }
               </Button>
             </Box>
           </Col>
-          <p><input type="radio" id="american_liberals" name="audience" value="american_liberals" />
-            <label for="liberals">🗽 American Liberals</label></p>
-
-            <p><input type="radio" id="american_conservatives" name="audience" value="american_conservatives" />
-            <label for="right_wing">🦅 American Conservatives</label></p>
-
-            <p><input type="radio" id="muslims" name="audience" value="muslims" />
-            <label for="muslims">🕌 Muslims</label></p>
-
-            <p><input type="radio" id="hitech" name="audience" value="hitech" />
-            <label for="ukrainians">💻 Ukrainians</label></p>
-
-            <p><input type="radio" id="kids" name="audience" value="kids" />
-            <label for="ukrainians">🧸 Kids</label></p>
+         
         </Row>
         <Row>
         </Row>
-        <Row>
+        <Row style={{marginTop: '30px'}}>
           <Col md={12} className="home-about-social">
             <h1 data-aos="fade-right">
               SHARE ON<span className="primary-header"> SOCIAL MEDIA </span>

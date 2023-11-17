@@ -20,7 +20,7 @@ const ScrollToBottom = () => {
     var objDiv = document.getElementById("about");
 
     window.scrollTo({
-      top: objDiv.scrollHeight - 350,
+      top: objDiv.scrollHeight - 200,
       behavior: 'smooth',
     })
   }
