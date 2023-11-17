@@ -61,7 +61,7 @@ function Home2() {
              `<Grid container justifyContent="center">
              <Tooltip title_disabled="${rule.response}">
              <span class="${rule.grade} strike" contenteditable spellcheck='false' id=${snippetId}>` + 
-             text.substring(snipIndex, snipIndex + rule.snippet.length) +
+             text.substring(snipIndex, snipIndex + rule.snippet.length + 1) +
              `</span></Tooltip></Grid>` +
             text.substring(snipIndex + 1 + rule.snippet.length)
           }
