@@ -17,7 +17,6 @@ rules.push({audience: "american_liberals", platform: "*", question: "Does the fo
 rules.push({audience: "american_liberals", platform: "*", question: "Does the following text has accurate mentions of the term 'Zionism' in it or in the  hashtags section?", grade: "bad", response: "The suggested post phrasing has a clear mention of The term 'Zionism' in the text or hashtags section. This term is not perceived well with the selected target audience as they see it as colonialism. Consider rephrasing your text or removing specific hashtags"});
 rules.push({audience: "american_liberals", platform: "*", question: "Does the following text has accurate mentions of the term 'terror' in it or in the  hashtags section?", grade: "bad", response: "Use the phrases Mass shooting/Crimes against humanity instead of the word 'terror'."});
 rules.push({audience: "*", platform: "*", question: "Does the text rely on unreliable sources?", grade: "bad", response: "Ensure the credibility of your sources. Relying on unreliable or biased information can compromise the integrity of your message."});
-rules.push({audience: "*", platform: "*", question: "Does the text use inflammatory language or insults?", grade: "bad", response: "Avoid inflammatory language or insults. A respectful tone promotes healthier discussions and understanding."});
 
 function getRules(audience, platform)
 {
