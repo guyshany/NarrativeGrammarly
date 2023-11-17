@@ -35,6 +35,8 @@ export async function parseText(text, audience) {
    // model: 'gpt-3.5-turbo-1106',
    model: 'gpt-4-1106-preview',
     response_format: { type: 'json_object' },
+    seed: 10,
+    temperature: 0.2,
   })
   
   console.log(completion.choices[0].message.content);
