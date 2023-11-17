@@ -100,7 +100,7 @@ function Home2() {
              
             >
               <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
-              <p><input type="radio" id="american_liberals" name="audience" value="american_liberals" />
+              <p className='audienceInput'><input type="radio" id="american_liberals" name="audience" value="american_liberals" />
             <label for="liberals">🗽 American Liberals </label></p>
 
             <p className='audienceInput'><input type="radio" id="american_conservatives" name="audience" value="american_conservatives" />
