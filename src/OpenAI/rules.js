@@ -17,6 +17,7 @@ rules.push({audience: "american_liberals", platform: "*", question: "Does the fo
 rules.push({audience: "american_liberals", platform: "*", question: "Does the following text has accurate  mentions of the term 'Zionism' in it or in the  hashtags section? ", grade: "bad", response: "The suggested post phrasing has a clear mention of The term 'Zionism' in the text or hashtags section. This term is not perceived well with the selected target audience as they see it as colonialism. Consider rephrasing your text or removing specific hashtags"});
 //Can the first sentence of this text be improved to effectively summerise the text? Please answer in yes or no if yes provide an alternative first sentence no longer then 12 words
 
+
 function getRules(audience, platform)
 {
     var result = [];
