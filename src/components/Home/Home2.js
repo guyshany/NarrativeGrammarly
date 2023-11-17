@@ -88,11 +88,10 @@ function Home2() {
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
+  <div class="plans" style={{maxWidth: '100%', display: "block", padding: 0}}>
         <Row>
-        <Tooltip title={"sadsadsadsa dksa dlksalksajd lkjsa djsalk jdlksa jdlkjsa lkdjsa lkdjsalk jdlksa dlkjsalkds"}>
-      </Tooltip>
           <Col md={12} className="home-about-description" style={{
-    alignItems: 'center'}}>
+    alignItems: 'center', height: '91vh', marginTop: '-68px'}}>
             <h1 style={{ fontSize: '2.6em' }} data-aos="fade-right">
               <span className="primary-header"> WRITE YOUR </span> POST
             </h1>
@@ -160,6 +159,7 @@ function Home2() {
           </Col>
          
         </Row>
+        </div>
         <Row>
         </Row>
         <Row style={{marginTop: '30px'}}>
