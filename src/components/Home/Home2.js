@@ -154,7 +154,7 @@ function Home2() {
                 style={{marginTop: "20px"}}
                 onClick={() => !submitted ? onClick(originalText) : setSubmitted(false)}
               >
-                {!submitted ? "Enhance Post" : "Write A New Post" }
+                {!submitted ? "Boost Post" : "clear text" }
               </Button>
             </Box>
           </Col>
