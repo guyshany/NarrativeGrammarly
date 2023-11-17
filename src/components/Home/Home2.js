@@ -112,8 +112,8 @@ function Home2() {
             <p className='audienceInput'><input type="radio" id="hitech" name="audience" value="hitech" />
             <label for="hitech">💻 Hi-tech</label></p>
 
-            <p className='audienceInput'><input type="radio" id="kids" name="audience" value="kids" />
-            <label for="ukrainians">🧸 Kids </label></p>
+            <p className='audienceInput'><input type="radio" id="muslim_women" name="audience" value="muslim_women" />
+            <label for="muslim_women">🧕 Muslim Women</label></p>
               </div>
               <div id="container2">
               {
