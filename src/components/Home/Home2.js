@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Nav } from 'react-bootstrap'
 import myImg from '../../Assets/Avatar.png'
 import Tilt from 'react-parallax-tilt'
 import Box from '@mui/material/Box'
@@ -15,7 +15,8 @@ import Button from '@mui/material/Button'
 import { parseText } from  '../../OpenAI/openai'
 import CircularLoader from '../loaders/CircularLoader'
 import { Typography } from '@mui/material'
-// import './home2.css'
+import Tooltip from '@mui/material/Tooltip';
+import './home2.css'
 
 function Home2() {
   const [originalText, setOriginalText] = useState('')
@@ -41,17 +42,29 @@ function Home2() {
 
     // setHashTags(hashTags)
 
-
     function highlightSnippets(text, rules) {
       rules.forEach(rule => {
-          var regex = new RegExp(rule.snippet);
-          text = text.replace(regex, `<div class="${rule.grade}">${rule.snippet}</div>`);
+          let snipIndex = text.replace('  ', ' ').lastIndexOf(rule.snippet.replace('  ', ' '));
+
+          if(snipIndex !== -1) {
+            text = text.substring(0, snipIndex) +
+             `<Grid container justifyContent="center">
+             <Tooltip title="${rule.response}">
+             <span class="${rule.grade} strike" contenteditable spellcheck='false'>` + 
+             text.substring(snipIndex, snipIndex + rule.snippet.length) +
+             `</span></Tooltip></Grid>` +
+            text.substring(snipIndex + 1 + rule.snippet.length)
+          }
       });
   
       return text;
   }
+  
 
     let highlightedText = highlightSnippets(originalText, rules);
+    const mock = `<Grid container justifyContent="center">
+    <Tooltip title="Consider using other methods" placement="bottom" style={{ backgroundColor: '#fff'}}>
+    <span class=bad>what about the jews</span><Tooltip></Grid>`;
     setHighlightedText(highlightedText)
     setIsLoading(false)
 } 
@@ -60,6 +73,8 @@ function Home2() {
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
+        <Tooltip title={"sadsadsadsa dksa dlksalksajd lkjsa djsalk jdlksa jdlkjsa lkdjsa lkdjsalk jdlksa dlkjsalkds"}>
+      </Tooltip>
           <Col md={12} className="home-about-description" style={{
     alignItems: 'center'}}>
             <h1 style={{ fontSize: '2.6em' }} data-aos="fade-right">
@@ -97,7 +112,7 @@ function Home2() {
                   }}
                    onChange={handleChange}
                  />
-               </div> : <Typography variant='h5' className='bad' id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
+               </div> : <Typography variant='h5' id="highLightedText" style={{height: '395px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}} dangerouslySetInnerHTML={{ __html: highlightedText }} >
                 </Typography>
               }
               </div>
