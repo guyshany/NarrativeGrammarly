@@ -18,6 +18,8 @@ import { Typography } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip';
 import './home2.css'
 
+import tippy from 'tippy.js';
+
 function Home2() {
   const [originalText, setOriginalText] = useState('')
   const [submitted, setSubmitted] = useState(false);
@@ -52,15 +54,23 @@ function Home2() {
       rules.forEach(rule => {
           let snipIndex = text.replace('  ', ' ').lastIndexOf(rule.snippet.replace('  ', ' '));
 
+          var snippetId = "snippet" + rule.id;
+
           if(snipIndex !== -1) {
             text = text.substring(0, snipIndex) +
              `<Grid container justifyContent="center">
-             <Tooltip title="${rule.response}">
-             <span class="${rule.grade} strike" contenteditable spellcheck='false'>` + 
+             <Tooltip title_disabled="${rule.response}">
+             <span class="${rule.grade} strike" contenteditable spellcheck='false' id=${snippetId}>` + 
              text.substring(snipIndex, snipIndex + rule.snippet.length) +
              `</span></Tooltip></Grid>` +
             text.substring(snipIndex + 1 + rule.snippet.length)
           }
+
+          setTimeout(function(){
+            tippy('#' + snippetId, {
+              content: rule.response,
+            })
+          }, 100);
       });
   
       return text;

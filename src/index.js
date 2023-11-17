@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals'
 import { ThemeProvider } from './Context/theme'
 import './OpenAI/openai.js'
 
+import 'tippy.js/dist/tippy.css'; // optional for styling
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(

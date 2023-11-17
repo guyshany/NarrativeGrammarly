@@ -22,6 +22,7 @@
     "react-parallax-tilt": "^1.7.151",
     "react-router-dom": "^6.14.1",
     "react-scripts": "^5.0.1",
+    "tippy.js": "^6.3.7",
     "typewriter-effect": "^2.20.1",
     "web-vitals": "^3.3.2"
   },

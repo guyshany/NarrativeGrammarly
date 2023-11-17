@@ -57,3 +57,7 @@ main {
   background: #03467a;
   border-radius: 12px;
 }
+
+.tippy-content {
+  font-size: 18px; /* Set your desired font size here */
+}
